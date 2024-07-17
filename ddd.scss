@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+// Settings
+
+$length: 8; // SYNC WITH HTML
+$limit: 99;
+$space: 3.5vw;
+$time: 1s;
+
+// Colors
+
+$color-background: #1c0c2a;
+$color-border: #343b99;
+$color-color: #61bdf6;
+$color-hover: #9affdc;
+
+// Animations
+
+$animation-scale: linear infinite;
+$animation-radius: ease-in-out infinite;
+$animation-translate: translate-3D linear infinite;
+$animation-bubble-sort: ease-in-out forwards 1s;
+
+// Functions
+
+@function digits ( $number )
+{
+  @return str-length( quote( #{ $number } ) );
+}
+
+@function to-fixed ( $number, $digits, $method: round )
+{
+  $n: 1;
+  
+  @for $i from 1 through $digits
+  {
+    $n: $n * 10;
+  }
+  
+  @return call( get-function( $method ), $number * $n ) / $n;
+}
+
+@function percents ( $steps, $digits: 2 )
+{
+  @return to-fixed( 100 / ( $steps + 1 ), $digits ) * 1%;
+}
+
+@function distance ( $index, $size: $size, $space: $space )
+{
+  @return ( $index - 1 ) * $size + $index * $space;
+}
+
+@function random-list ( $length, $limit )
+{
+  $list: ();
+  
+  @while length( $list ) < $length
+  {
+    $number: random( $limit );
+    
+    @if not index( $list, $number )
+    {
+      $list: append( $list, $number );
+    }
+  }
+  
+  @return $list;
+}
+
+@function map-steps ( $map, $key, $step, $value )
+{
+  $steps: map-get( $map, $key );
+  
+  $step-value: $step $value;
+    
+  @return map-merge( $map, ( $key: append( if( $steps, $steps, () ), $step-value, comma ) ) );
+}
+
+@function bubble-sort ( $list )
+{
+  $length: length( $list ) - 1;
+  $map: ();
+  $steps: 0;
+  $swapped: true;
+  
+  @while $swapped
+  {
+    $swapped: false;
+    
+    @for $j from 1 through $length
+    {
+      $index: $j + 1;
+      $prev: nth( $list, $j );
+      $next: nth( $list, $index );
+
+      @if $prev > $next
+      {
+        $steps: $steps + 1;
+        $swapped: if( $swapped, $swapped, true );
+        
+        $list: set-nth( $list, $j, $next );
+        $list: set-nth( $list, $index, $prev );
+
+        $map: map-steps( $map, $prev, $steps, 1 );
+        $map: map-steps( $map, $next, $steps, -1 );
+      }
+    }
+  }
+  
+  @return $map $steps;
+}
+
+// Variables
+
+$size: to-fixed( ( 100vw - ( $length + 1 ) * $space ) / $length, 2 );
+$shadow: 0 0 $size * 0.05 0 rgba( $color-hover, .25 );
+
+$radius-map: ( 
+  1: 40% 50% 50% 50%, 
+  2: 50% 40% 50% 50%, 
+  3: 50% 50% 40% 50%, 
+  4: 50% 50% 50% 40%
+);
+
+// Mixins
+
+@mixin size ( $w: null, $h: null )
+{
+  width: $w;
+  height: $h;
+}
+
+@mixin box-size ( $s )
+{
+  width: $s;
+  height: $s;
+}
+
+@mixin keyframes-radius ( $name, $steps, $map )
+{
+  $percent: percents( $steps );
+  
+  @keyframes #{ $name }
+  {
+    @for $step from 1 through $steps
+    {
+      $keys: map-keys( $map );
+
+      $key: nth( $keys, random( length( $keys ) ) );
+
+      $value: map-get( $map, $key );
+
+      $map: map-remove( $map, $key );
+ 
+      #{ $percent * $step } { border-radius: $value }
+    }
+  }
+}
+
+@mixin keyframes-scale ( $name, $steps, $base: .85 )
+{
+  $percent: percents( $steps );
+  
+  $random: random( 2 );
+  
+  @keyframes #{ $name }
+  {
+    @for $step from 1 through $steps
+    {
+      $mod2: ( $random + $step ) % 2 == 0;
+      
+      $scale: to-fixed( random() / 10 + $base, 3 );
+      
+      $x: if( $mod2, $scale, 1 );
+      
+      $y: if( $mod2, 1, $scale );
+      
+      #{ $percent * $step } { transform: scale3d( $x, $y, 1 ) }
+    }
+  }
+}
+
+@mixin keyframes-bubble-sort ( $name, $index, $key, $map, $steps )
+{
+  $list: map-get( $map, $key );
+  $length: length( $list );
+  $percent: percents( $steps );
+  $prev: nth( nth( $list, 1 ), 1 ) * $percent;
+    
+  @keyframes #{ $name }
+  {
+    0%, #{ $prev } { left: distance( $index ) }
+    
+    @for $i from 1 through $length
+    {     
+      $next: if( $i == $length, 100%, nth( nth( $list, $i + 1 ), 1 ) * $percent );
+
+      $index: $index + nth( nth( $list, $i ), 2 );
+      
+      #{ $prev + $percent / 2 }, #{ $next } { left: distance( $index ) }
+
+      $prev: $next;
+    }
+  }
+}
+
+@mixin bubble-sort ( $length, $limit )
+{
+  $list: random-list( $length, $limit );
+  $bubbles: bubble-sort( $list );
+  $sorted-list: nth( $bubbles, 1 );
+  
+  --time-sort: #{ nth( $bubbles, 2 ) * $time };
+  
+  @for $index from 1 through $length
+  {
+    $name-radius: radius-#{ $index };
+    $name-scale: scale-#{ $index };
+    $content: nth( $list, $index );
+    
+    &:nth-of-type( #{ $index } )
+    {   
+      @if map-get( nth( $bubbles, 1 ), $content ) != null
+      {
+        $name-sorting: sorting-#{ $index };
+        
+        @include keyframes-bubble-sort( $name-sorting, $index, $content, $bubbles... );
+        
+        animation-name: $name-sorting;
+      }
+      
+      @include keyframes-radius( $name-radius, 4, $radius-map );      
+      @include keyframes-scale( $name-scale, 4 );
+
+      --t-y: #{ if( random( 2 ) == 1, 1, -1 ) * ( 10 + random( 20 ) ) };
+      --degrees: #{ random( 360 ) - 1 };
+      --time-bubble: #{ random( 5 ) + 5s };
+      
+      left: distance( $index );
+              
+      .bubble
+      {
+        &::before { animation-name: $name-radius, $name-scale }
+      
+        &::after { content: '#{ $content }' }
+      }
+    }
+  }
+}
+
+// Extends
+
+%flex-center
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%full-size
+{
+  @include box-size( 100% );
+}
+
+/* RESET */
+
+*,
+*::before,
+*::after
+{
+  outline: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+// Layout
+
+html
+{
+  @include size( 100vw, 100vh );
+}
+
+body
+{
+  @extend %full-size, %flex-center;
+  background: $color-background;
+  overflow: hidden;
+}
+
+.list
+{
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.item
+{
+  @extend %flex-center;
+  @include box-size( $size );
+  animation: var( --time-sort ) $animation-bubble-sort;
+  position: absolute;
+   
+  @include bubble-sort( $length, $limit );
+}
+
+.bubble
+{
+  animation: $animation-translate;
+  color: $color-color;
+  &::before
+  {       
+    content: '';
+    animation: $animation-radius, $animation-scale;
+    box-shadow: $shadow inset, $shadow;
+    background: 
+      radial-gradient( $color-background 50%, rgba( $color-background, 0 ) ),
+      linear-gradient( calc( #{ var( --degrees ) } * 1deg ), $color-color, rgba( $color-color, 0 ) 75% ),
+      linear-gradient( calc( ( ( #{ var( --degrees ) } + 120 ) % 360 ) * 1deg ), $color-border, rgba( $color-border, 0 ) 75% ),
+      linear-gradient( calc( ( ( #{ var( --degrees ) } + 240 ) % 360 ) * 1deg ), $color-background, rgba( $color-background, 0 ) 75% );
+  }
+  
+  &::after
+  {
+    color: $color-color;
+    font-size: $size / ( digits( $limit ) + .5 );  
+  }
+   
+  &,
+  &::before,
+  &::after
+  {
+    @extend %full-size, %flex-center;
+    animation-duration: var( --time-bubble );
+    border-radius: 50%;
+    position: absolute;
+  }
+}
+
+@keyframes translate-3D
+{
+  25% { transform: translate3d( 0, calc( #{ var( --t-y ) } * 1% ), 0 ) }
+  75% { transform: translate3d( 0, calc( #{ var( --t-y ) } * -1% ), 0 ) }
+}

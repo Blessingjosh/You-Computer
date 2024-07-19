@@ -14,6 +14,7 @@ function updateScore(){
   document.querySelector('.js-score')
   .innerHTML = `Win:${score.Wins} Lose;${score.Loses} Tile:${score.Tiles}`
 }
+
 let score=JSON.parse(localStorage.getItem('score'))||{
   Wins: 0,
   Loses:0,
@@ -56,6 +57,10 @@ updateScore()
   }else if(result === 'Tile'){
     score.Tiles+=1
   }
+  if(score.Wins + score.Loses + score.Tiles == 5){
+window.location= "gameover.html"
+  }
+
   document.querySelector('.result').innerHTML = `${result}`
   document.querySelector('.move').innerHTML = `You
 <img src="Images/${step}-emoji.png" class="icon">

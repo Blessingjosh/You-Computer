@@ -1,10 +1,9 @@
 .head{
     justify-content: space-between;
-  /* padding: 2rem 0%; */
   display: flex;
   z-index: 3;
-  margin-left: 90px;
-  margin-right: 100px;
+  margin-left: 100px;
+  margin-right: 150px;
 
   align-items: center;
   justify-content: space-between;
@@ -29,6 +28,7 @@
    /* border: 1px solid;  */
    /* padding: 20px; */
    border: none;
+   cursor: pointer;
    color: #FFBF00;
    /* border-radius: 100px; */
    font-family: "Monofett", monospace;
@@ -84,13 +84,8 @@
       transform: translateX(-200%);
     }
   }
-
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
-
-
-
 .e {
   position: relative;
 }
@@ -101,14 +96,6 @@
   position: relative;
   font-family: 'Poppins', sans-serif;
 }
-
-/* h1 {
-  position: relative;
-  font-size: 72px;
-  color: white;
-  line-height: 0;
-} */
-
 .drop {
   position: absolute;
   height: 200px;
@@ -136,19 +123,19 @@
   width: 40px;
   background: #E6FDFB;
   border-radius: 44% 56% 46% 54% / 36% 50% 50% 64%;
-  left: 130px;
-  top: 40px;
+  left: 130px; 
+  top: 40px; 
   box-shadow: 16px 40px 0 -10px white;
   opacity: 0.8;
 }
 
 .drop1 {
-  left: -100px;
+  /* left: -20px; */
   top: -50px;
 }
 
 .drop2 {
-  right: -100px;
+  right: -5px;
   bottom: -50px;
   z-index: -1;
   border-radius: 46% 50% 39% 54% / 56% 57% 50% 50%;
@@ -157,10 +144,26 @@
 .drop2::before {
   border-radius: 46% 50% 39% 54% / 56% 57% 50% 50%;
 }
+#loader {
+    border: 12px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 12px solid #444444;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+}
 
-p {
-  line-height: 0;
-  color: white;
-  font-size: 20px;
-  font-family: "Montserrat"
+.center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
 }

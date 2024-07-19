@@ -4,39 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="ddd.scss"> -->
+   
+    <link rel="stylesheet" href="gameover.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monofett&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="front.css">
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="boss">
-   <div class="header">
-    <div class="e">
-        <div class="drop drop1"></div>
-        <div class="drop drop2"></div>
-        <div class="text-e">
-    <div class="head">
-        <div class="cart">
-            <img class="i" src="9.png" alt="">
-        </div>
-    <div class="name">
-        <h1 class="b">JOSHY<br>&nbsp;GAME</h1>
+    <a href="Project.html"></a>
+    <div class="block">
+        <h1 class="h">GAME OVER</h1> 
+    <p class="r"></p>
     </div>
-    <div class="carton">
-        <img class="i" src="10.png" alt="">
-    </div>
-</div>
-</div>
-</div>
-<center><button onclick="yes()" id="ok" class="c">START</button></center>
-   </div>
+   
    <div id="maindiv">
     <div id="div1">
       
@@ -116,26 +96,10 @@
     </div>
   </div>
 
-</div>
-<div id="loader" class="center"></div>
+
+<script src="gameover.js"></script>
+<script src="Project.js"></script>
 
 
-<script>
- document.onreadystatechange = function () {
-    if (document.readyState !== "complete") {
-        document.querySelector(
-            "body").style.visibility = "hidden";
-        document.querySelector(
-            "#loader").style.visibility = "visible";
-    } else {
-        document.querySelector(
-            "#loader").style.display = "none";
-        document.querySelector(
-            "body").style.visibility = "visible";
-    }
-};
-
-</script>
-<script src="front.js"></script>
 </body>
 </html>

@@ -11,10 +11,11 @@ function move(){
   return computerMove
 }
 function updateScore(){
-  document.querySelector('.js-score')
-  .innerHTML = `Win:${score.Wins} Lose;${score.Loses} Tile:${score.Tiles}`
-}
-
+  let a =   document.querySelector('.js-score')
+   a.innerHTML = `Win:${score.Wins} Lose:${score.Loses} Tile:${score.Tiles}`
+ localStorage.setItem('myValue', a.innerHTML)
+ }
+ 
 let score=JSON.parse(localStorage.getItem('score'))||{
   Wins: 0,
   Loses:0,
@@ -58,8 +59,9 @@ updateScore()
     score.Tiles+=1
   }
   if(score.Wins + score.Loses + score.Tiles == 5){
-window.location= "gameover.html"
-  }
+    
+    window.location.href= "gameover.html"
+      }
 
   document.querySelector('.result').innerHTML = `${result}`
   document.querySelector('.move').innerHTML = `You

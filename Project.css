@@ -7,6 +7,7 @@ body{
 .title{
   font-weight: bold;
   font-size: 30px;
+  text-align: center;
 }
 .icon{
   height: 50px;
@@ -17,22 +18,29 @@ body{
   width: 120px;
   height: 120px;
   border-radius: 60px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }.result{
   font-size: 30px;
   font-weight: bold;
   margin-top: 30px;
-  margin-left: 158px;
+  /* margin-left: 158px; */
+  text-align: center;
+
 }
 .move{
   font-size: 15px;
   font-weight: bold;
-  margin-left: 135px;
+  text-align: center;
+
 }
 .js-score{
   margin-top: 60px;
-  margin-left: 135px;
+  text-align: center;
+
 }
 .reset{
   background-color: white; 
@@ -41,4 +49,13 @@ body{
   padding: 8px 15px;
   cursor: pointer;
   margin-left: 160px;
+  /* text-align: center; */
+  justify-content: center;
+  /* justify-items: center; */
+
+}
+.h{
+  color: white;
+    font-size: 30px;
+    text-align: center;
 }

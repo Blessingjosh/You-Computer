@@ -11,11 +11,13 @@ function move(){
   return computerMove
 }
 function updateScore(){
-  let a =   document.querySelector('.js-score')
-   a.innerHTML = `Win:${score.Wins} Lose:${score.Loses} Tile:${score.Tiles}`
- localStorage.setItem('myValue', a.innerHTML)
- }
+ let a =   document.querySelector('.js-score')
+  a.innerHTML = `Win:${score.Wins} Lose:${score.Loses} Tile:${score.Tiles}`
+localStorage.setItem('myValue', a.innerHTML)
+}
+
  
+
 let score=JSON.parse(localStorage.getItem('score'))||{
   Wins: 0,
   Loses:0,
@@ -59,9 +61,10 @@ updateScore()
     score.Tiles+=1
   }
   if(score.Wins + score.Loses + score.Tiles == 5){
-    
-    window.location.href= "gameover.html"
-      }
+window.location.href= "gameover.html"
+final()
+
+  }
 
   document.querySelector('.result').innerHTML = `${result}`
   document.querySelector('.move').innerHTML = `You
@@ -71,3 +74,31 @@ Computer`
   updateScore()
   localStorage.setItem('score', JSON.stringify(score))
  }
+ final()
+ function final(){
+  if(score.Wins>score.Loses & score.Wins>score.Tiles){
+    let j= document.querySelector('.h');
+    j.innerHTML= 'You Won' 
+localStorage.setItem('yea', j.innerHTML)
+  }
+  else if(score.Loses>score.Wins & score.Loses>score.Tiles){
+   let j = document.querySelector('.h');
+   j.innerHTML= 'You Lose'
+localStorage.setItem('yea', j.innerHTML)
+  }
+  else if(score.Tiles > score.Wins& score.Tiles>score.Loses){
+    let j = document.querySelector('.h');
+    j.innerHTML= 'There is a Tile'
+localStorage.setItem('yea', j.innerHTML)
+
+  }else{
+    let j = document.querySelector('.h');
+    j.innerHTML= 'Replay'
+localStorage.setItem('yea', j.innerHTML)
+  }
+ }
+  
+
+
+
+

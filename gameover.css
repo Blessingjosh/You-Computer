@@ -1,115 +1,130 @@
 body{
-    background-color: rgb(25, 25, 25);
-    /* color: white; */
-    font-family: Arial;
-    /* margin: 100px 470px; */
-  }
+  background-color: rgb(25, 25, 25);
+  /* color: white; */
+  font-family: Arial;
+  border-top: 6px ridge red;
+  border-left: 6px ridge red;
+  border-right: 6px ridge red;
+  
+  /* margin: 100px 470px; */
+}
 .end{
-    color: aliceblue;
-    margin-top: 250px;
-    border: 2px solid;
+  color: aliceblue;
+  margin-top: 250px;
+  border: 2px solid;
 }
 .mar{
-    width: 30px;
-    height: 20px;
-    color: red;
-    background-color: black;
+  width: 30px;
+  height: 20px;
+  color: red;
+  background-color: black;
 }
 #maindiv{
-    background-color: white;
-    border: 2px solid black;
-    overflow: hidden;
-    white-space: nowrap;
-    height: 3px;
-    margin-top: 215px;
-    padding-bottom: 60px;
-    text-align: center;
-    margin-left: -760px;
-    /* width: 100%; */
+  background-color: white;
+  border: 2px solid black;
+  overflow: hidden;
+  white-space: nowrap;
+  /* height: 3px; */
+  margin-top: 215px;
+  padding-bottom: 60px;
+  text-align: center;
+  margin-left: -760px;
+  /* width: 100%; */
 
-  }
-  
-  #div1 {
-    display: inline-block;
-    animation: marquee 10s linear infinite;
-  }
-  
-  #div2 {
-    display: inline-block;
-    animation: marquee2 10s linear infinite;
-    animation-delay: 5s;
-  }
-  @keyframes marquee {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
-  
-  @keyframes marquee2 {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-200%);
-    }
-  }
+}
 
- .h{
-    color: #FFBF00;
-    font-size: 50px;
-    text-align: center;
-    padding: 10px;
-    font-family: "Bungee Shade", sans-serif;
-    font-weight: 400;
-    font-style: normal;
- }
-  
-  .block {
-    position: relative;
-    margin: 100px auto 0;
-    width: 400px;
-    height: 250px;
-    background: linear-gradient(0deg, #000, #272727);
-  }
-  
-  .block:before, .block:after {
-    content: '';
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
-      #0000ff, #00ff00,#ffff00, #ff0000);
-    background-size: 400%;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    z-index: -1;
-    animation: steam 20s linear infinite;
-  }
-  
-  @keyframes steam {
-    0% {
-      background-position: 0 0;
-    }
-    50% {
-      background-position: 400% 0;
-    }
-    100% {
-      background-position: 0 0;
-    }
-  }
-  
-  .block:after {
-    filter: blur(50px);
-  }
+#div1 {
+  display: inline-block;
+  animation: marquee 10s linear infinite;
+}
 
-  .r{
-    color: white;
+#div2 {
+  display: inline-block;
+  animation: marquee2 10s linear infinite;
+  animation-delay: 5s;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
   }
-  #p{
-    color: white;
-    font-size: 30px;
-    text-align: center;
+  to {
+    transform: translateX(-100%);
   }
+}
+
+@keyframes marquee2 {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+
+.h{
+  color: #FFBF00;
+  font-size: 50px;
+  text-align: center;
+  padding: 10px;
+  font-family: "Bungee Shade", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.block {
+  position: relative;
+  margin: 100px auto 0;
+  width: 400px;
+  height: 250px;
+  background: linear-gradient(0deg, #000, #272727);
+}
+
+.block:before, .block:after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+    #0000ff, #00ff00,#ffff00, #ff0000);
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.block:after {
+  filter: blur(50px);
+}
+
+#r{
+  color: white;
+  font-size: 50px;
+}
+#p{
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+#she{
+  color: red;
+  font-size: 30px;
+  text-align: center;
+}
+#he{
+  color: red;
+  font-size: 30px;
+  text-align: center;
+}

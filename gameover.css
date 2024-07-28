@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik+Bubbles&family=Teko:wght@300..700&display=swap');
 body{
   background-color: rgb(25, 25, 25);
   /* color: white; */
@@ -24,8 +25,8 @@ body{
   border: 2px solid black;
   overflow: hidden;
   white-space: nowrap;
-  /* height: 3px; */
-  margin-top: 215px;
+  height: 3px;
+  margin-top: 135px;
   padding-bottom: 60px;
   text-align: center;
   margin-left: -760px;
@@ -114,17 +115,69 @@ body{
   font-size: 50px;
 }
 #p{
+  font-family: "Teko", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   color: white;
-  font-size: 30px;
+  font-size: 35px;
   text-align: center;
+  
 }
 #she{
-  color: red;
-  font-size: 30px;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.start .but{
+  text-decoration: none;
+  color:#FFBF00;
+}
+.start{
   text-align: center;
 }
-#he{
-  color: red;
-  font-size: 30px;
+
+.button-73 {
+  appearance: none;
+  background-color: #FFFFFF;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow: #ADCFFF 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -.24px;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.3rem;
+  quotes: auto;
   text-align: center;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-73:hover {
+  background-color: #FFC229;
+  box-shadow: #FF6314 0 -6px 8px inset;
+  transform: scale(1.125);
+}
+
+.button-73:active {
+  transform: scale(1.025);
+}
+
+@media (min-width: 768px) {
+  .button-73 {
+    font-size: 1.5rem;
+    padding: .75rem 2rem;
+  }
 }

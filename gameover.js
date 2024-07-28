@@ -3,10 +3,13 @@
 var to = localStorage.getItem('myValue')
 var output = document.getElementById('p');
 output.innerHTML = to
+tea()
 
-var or = localStorage.getItem('yea')
-var out = document.getElementById('she');
-out.innerHTML = or
+function tea(){
+  var or = localStorage.getItem('yea')
+  var out = document.getElementById('she');
+  out.innerHTML = or
+}
 
 
 // var t = localStorage.getItem('alright')

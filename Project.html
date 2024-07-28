@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RPS </title>
   <link rel="stylesheet" href="Project.css">
+  <link href="https://fonts.googleapis.com/css2?family=Monofett&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <p class="title">Rock Paper Scissors</p>
@@ -27,13 +28,14 @@
   <p class="h"></p>
 
 
-  <button onclick="
+ <center> <button onclick="
   score.Wins= 0;
   score.Loses = 0;
   score.Tiles = 0;
   localStorage.removeItem('score')
   updateScore()
-  " class="reset">Reset Button</button>
+  " class="button-49" role="button">Reset Button</button></center>
+<!-- <button class="button-49" role="button">Button 49</button> -->
 
 
   <script src="Project.js"></script>

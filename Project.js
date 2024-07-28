@@ -77,8 +77,8 @@ Computer`
  final()
  function final(){
   if(score.Wins>score.Loses & score.Wins>score.Tiles){
-    let j= document.querySelector('.h');
-    j.innerHTML= 'You Won' 
+    let j = document.querySelector('.h');
+    j.innerHTML= 'You Win'
 localStorage.setItem('yea', j.innerHTML)
   }
   else if(score.Loses>score.Wins & score.Loses>score.Tiles){
@@ -94,11 +94,15 @@ localStorage.setItem('yea', j.innerHTML)
   }else{
     let j = document.querySelector('.h');
     j.innerHTML= 'Replay'
+   
 localStorage.setItem('yea', j.innerHTML)
+
+
   }
  }
   
-
+   
+  
 
 
 
